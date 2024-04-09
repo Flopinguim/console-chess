@@ -1,4 +1,4 @@
-﻿using Tabuleiro;
+﻿using console_chess.tabuleiro;
 
 namespace console_chess
 {
@@ -6,8 +6,9 @@ namespace console_chess
     {
         static void Main(string[] args)
         {
-            Posicao posicao;
-            posicao = new Posicao(3,4)
+            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+            Tela.imprimirTabuleiro(tabuleiro);
+            Console.ReadLine();
         }
     }
 }

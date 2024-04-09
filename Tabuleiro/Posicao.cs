@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace Tabuleiro
+﻿namespace console_chess.tabuleiro
 {
     public class Posicao
     {
