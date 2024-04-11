@@ -7,10 +7,17 @@ namespace console_chess
     {
         static void Main(string[] args)
         {
-            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-            tabuleiro.colocarPeca(new Torre(tabuleiro,Cor.Preta), new Posicao(0, 0));
+            try
+            {
+                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
 
-            Tela.imprimirTabuleiro(tabuleiro);
+                Tela.imprimirTabuleiro(tabuleiro);
+            }
+            catch (TabuleiroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Console.ReadLine();
         }
     }
