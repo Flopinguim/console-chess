@@ -10,9 +10,9 @@ namespace console_chess
         {
             try
             {
-                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('a', 1);
+                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 
-                Console.WriteLine(posicaoXadrez);
+                Tela.imprimirTabuleiro(tabuleiro);
             }
             catch (TabuleiroException ex)
             {
