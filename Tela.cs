@@ -1,4 +1,5 @@
 ﻿using console_chess.tabuleiro;
+using console_chess.xadrez;
 
 namespace console_chess
 {
@@ -15,7 +16,6 @@ namespace console_chess
                         Console.Write("- ");
                     else
                     {
-                        Console.Write(tabuleiro.peca(i, j) + " ");
                         imprimirPeca(tabuleiro.peca(i, j));
                         Console.Write(" ");
                     }
@@ -25,9 +25,17 @@ namespace console_chess
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static PosicaoXadrez lerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
+        }
+
         public static void imprimirPeca(Peca peca)
         {
-            if (peca.cor.Equals(Cor.Branca))
+            if (peca.cor.Equals( Cor.Branca))
                 Console.Write(peca);
             else
             {
@@ -37,6 +45,5 @@ namespace console_chess
                 Console.ForegroundColor = aux;
             }
         }
-
     }
 }

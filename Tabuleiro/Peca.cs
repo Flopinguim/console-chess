@@ -14,5 +14,7 @@
             this.tabuleiro = tabuleiro;
             this.quantidadeMovimentos = quantidadeMovimentos;
         }
+
+        public void incrementarQteMovimentos() => quantidadeMovimentos++;
     }
 }
