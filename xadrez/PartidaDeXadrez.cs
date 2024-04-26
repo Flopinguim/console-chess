@@ -6,8 +6,8 @@ namespace console_chess.xadrez
     public class PartidaDeXadrez
     {
         public Tabuleiro tabuleiro { get; private set; }
-        private int turno;
-        private Cor jogadorAtual;
+        public int turno { get; private set; }
+        public Cor jogadorAtual { get; private set; }
         public bool terminada { get; private set; }
 
         public PartidaDeXadrez()
@@ -26,6 +26,31 @@ namespace console_chess.xadrez
             Peca pecaCapturada = tabuleiro.retirarPeca(destino);
             tabuleiro.colocarPeca(peca, destino);
         }
+
+        public void realizaJogada(Posicao origem, Posicao destino)
+        {
+            executaMovimento(origem, destino);
+            turno++;
+            mudaJogador();
+        }
+
+        public void validarPosicaoDeOrigem(Posicao posicao)
+        {
+            if (tabuleiro.peca(posicao) == null)
+                throw new TabuleiroException("Não existe peça na posição de origem escolhida!");
+            if (jogadorAtual != tabuleiro.peca(posicao).cor)
+                throw new TabuleiroException("A peça de origem escolhida não é sua!");
+            if (!tabuleiro.peca(posicao).existeMovimentosPossiveis())
+                throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
+        }
+
+        public void validarPosicaoDeDestino(Posicao origem, Posicao destino)
+        {
+            if (!tabuleiro.peca(origem).podeMoverPara(destino))
+                throw new TabuleiroException("Posição de destino inválida!");
+        }
+
+        private void mudaJogador() => jogadorAtual = jogadorAtual.Equals(Cor.Branca) ? jogadorAtual = Cor.Preta : jogadorAtual = Cor.Branca;
 
         private void colocarPecas()
         {
