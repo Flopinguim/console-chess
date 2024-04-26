@@ -1,4 +1,5 @@
 ﻿using console_chess.tabuleiro;
+using console_chess.xadrez;
 using xadrez;
 
 namespace console_chess
@@ -9,16 +10,15 @@ namespace console_chess
         {
             try
             {
-                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-                tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0, 0));
+                PosicaoXadrez posicaoXadrez = new PosicaoXadrez('a', 1);
 
-                Tela.imprimirTabuleiro(tabuleiro);
+                Console.WriteLine(posicaoXadrez);
             }
             catch (TabuleiroException ex)
             {
                 Console.WriteLine(ex.Message);
             }
             Console.ReadLine();
-        }
+        }   
     }
 }
